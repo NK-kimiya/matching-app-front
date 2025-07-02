@@ -1,0 +1,126 @@
+.register-form {
+  width: 500px;
+  margin: 20px auto;
+}
+
+.register-form form {
+  display: block;
+  width: 100%;
+}
+
+.register-form input,
+.register-form textarea,
+.register-form select {
+  display: block;
+  width: 100%;
+  padding: 0px;
+}
+
+.register-form input,
+.register-form select {
+  height: 50px;
+  margin: 10px 0px;
+}
+
+.register-form textarea {
+  height: 200px;
+}
+
+.register-form button {
+  display: block;
+  width: 280px;
+  padding: 10px;
+  margin: 5px auto;
+  background-color: #4f46e5;
+  border: none;
+  color: white;
+}
+
+input[type="file"]::file-selector-button {
+  background: #4f46e5; /* 好きな色 */
+  color: #fff; /* 文字色 */
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+/* Safari 15 以前など旧 WebKit 用フォールバック */
+input[type="file"]::-webkit-file-upload-button {
+  background: #4f46e5;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+/*ダイアログ*/
+/* 背景オーバーレイ */
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* top/left/right/bottom: 0 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+/* ダイアログ本体 */
+/* 共通オーバーレイ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+/* --- 共通本体 --- */
+.modal {
+  width: clamp(260px, 90%, 420px);
+  padding: 2rem 1.4rem;
+  border-radius: 0.8rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* --- ④ ステータス別カラー --- */
+.modal--success {
+  background: #ffffff;
+  border-left: 6px solid #4f46e5;
+}
+.modal--error {
+  background: #fff5f5;
+  border-left: 6px solid #dc2626;
+}
+
+.modal h3 {
+  margin-bottom: 0.6rem;
+}
+.modal__msg {
+  white-space: pre-wrap; /* 改行維持 */
+  text-align: left;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.modal button {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  color: #fff;
+}
+.modal--success button {
+  background: #4f46e5;
+}
+.modal--error button {
+  background: #dc2626;
+}
+.modal button:hover {
+  opacity: 0.85;
+}
