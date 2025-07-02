@@ -53,7 +53,7 @@ const PREF_LIST = [
   "沖縄県",
 ];
 
-const RegisterForm = () => {
+const RegisterForm = ({ setRegisterDisplay }) => {
   //----------1.フォームの状態----------
   const [form, setForm] = useState({
     username: "",
@@ -169,6 +169,15 @@ const RegisterForm = () => {
         <button type="submit">登録</button>
 
         {message && <p>{message}</p>}
+        <a
+          href=""
+          onClick={(e) => {
+            e.preventDefault();
+            setRegisterDisplay(false);
+          }}
+        >
+          ログイン
+        </a>
       </form>
 
       {/* ---------- ダイアログ ---------- */}
