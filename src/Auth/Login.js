@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./RegisterForm.css";
 
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000"; // fallbackあり
+
 const Login = ({ setRegisterDisplay, setAccessToken }) => {
   //---1.フォームの状態---
   const [cred, setCred] = useState({ username: "", password: "" });
@@ -17,7 +19,7 @@ const Login = ({ setRegisterDisplay, setAccessToken }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/token/", cred, {
+      const res = await axios.post(`${baseURL}/api/token/`, cred, {
         headers: { "Content-Type": "application/json" },
       });
 
