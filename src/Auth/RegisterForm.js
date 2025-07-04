@@ -53,6 +53,8 @@ const PREF_LIST = [
   "沖縄県",
 ];
 
+const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000"; // fallbackあり
+
 const RegisterForm = ({ setRegisterDisplay }) => {
   //----------1.フォームの状態----------
   const [form, setForm] = useState({
@@ -87,7 +89,9 @@ const RegisterForm = ({ setRegisterDisplay }) => {
 
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/register/", // ←適宜置き換え
+        //http://127.0.0.1:8000
+        //https://matching-app-back.onrender.com/api/register/
+        `${baseURL}/api/register/`, // ←適宜置き換え
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
