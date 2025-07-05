@@ -1,0 +1,80 @@
+.user-list-area {
+  width: 980px;
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user-list-item {
+  width: 450px;
+  margin: 10px;
+  position: relative;
+  height: 600px;
+}
+
+.user-list-item img {
+  display: block;
+  width: 350px;
+  height: 350px;
+  margin: 5px auto;
+  border-radius: 50%;
+}
+
+.user-list-item p {
+  white-space: pre-wrap; /* 改行やスペースをそのまま表示 */
+}
+
+.user-list-item button {
+  display: block;
+  width: 350px;
+  background-color: #4f46e5;
+  border: none;
+  padding: 10px;
+  color: white;
+  position: absolute;
+  bottom: 3px;
+  left: 50%; /* 横方向の中央基準 */
+  transform: translateX(-50%);
+}
+
+/* ===== タブレット (768〜1023px) ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .user-list-area {
+    width: 740px;
+  }
+  .user-list-item {
+    width: 330px;
+  }
+
+  .user-list-item img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .user-list-item button {
+    width: 300px;
+  }
+}
+
+/* ===== スマホ (〜767px) ===== */
+@media (max-width: 767px) {
+  .user-list-area {
+    width: 80%;
+  }
+
+  .user-list-item {
+    width: 100%;
+    height: 500px;
+    margin-top: 60px;
+  }
+
+  .user-list-item img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .user-list-item button {
+    width: 200px;
+  }
+}

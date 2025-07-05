@@ -3,17 +3,22 @@ import "./App.css";
 import RegisterForm from "./Auth/RegisterForm";
 import Login from "./Auth/Login";
 import Navigation from "./Common/Navigation";
+import UserList from "./Components/UserList";
 
 function App() {
   const [registerDisplay, setRegisterDisplay] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
+
   useEffect(() => {
-    setAccessToken(localStorage.getItem("access"));
+    setAccessToken(localStorage.getItem("refresh"));
   }, []);
   return (
     <div className="App">
       {accessToken ? (
-        <Navigation setAccessToken={setAccessToken} />
+        <div>
+          <Navigation setAccessToken={setAccessToken} />
+          <UserList accessToken={accessToken} />
+        </div>
       ) : registerDisplay ? (
         <RegisterForm setRegisterDisplay={setRegisterDisplay} />
       ) : (

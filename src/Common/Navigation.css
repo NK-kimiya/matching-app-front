@@ -1,0 +1,15 @@
+.header {
+  width: 100%;
+  margin: 0px auto;
+  margin-bottom: 50px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+button {
+  display: block;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px;
+}

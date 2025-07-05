@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Navigation.css";
 const Navigation = ({ setAccessToken }) => {
   const logout = () => {
     // 1. トークン削除
@@ -8,7 +8,7 @@ const Navigation = ({ setAccessToken }) => {
     setAccessToken(false);
   };
   return (
-    <div>
+    <div className="header">
       <button onClick={() => logout()}>ログアウト</button>
     </div>
   );
