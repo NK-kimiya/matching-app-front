@@ -6,6 +6,8 @@ const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000"; /
 const UserDetail = ({ setIsDetailOpen, selectedId }) => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
+  const [content, setContent] = useState("");
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -30,6 +32,12 @@ const UserDetail = ({ setIsDetailOpen, selectedId }) => {
 
     fetchUserDetail();
   }, [selectedId]);
+
+  useEffect(() => {
+    if (userData?.chat_rooms?.[0]?.id) {
+      fetchMessages(userData.chat_rooms[0].id);
+    }
+  }, [userData]);
 
   // API呼び出し関数（fetch使用に統一）
   const apiCall = (access) =>
@@ -59,6 +67,62 @@ const UserDetail = ({ setIsDetailOpen, selectedId }) => {
     return data.access;
   };
 
+  const postMessage = async () => {
+    if (!content.trim()) return;
+
+    const access = localStorage.getItem("access");
+    const chatRoomId = userData?.chat_rooms?.[0]?.id; // ② 最初のルームを例で使用
+    if (!chatRoomId) {
+      alert("チャットルームが存在しません");
+      return;
+    }
+
+    let res = await fetch(`${baseURL}/api/chat/messages/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${access}`,
+      },
+      body: JSON.stringify({ chat_room: chatRoomId, content }),
+    });
+
+    if (res.status === 401 || res.status === 403) {
+      const refreshed = await refreshAccessToken();
+      if (refreshed) {
+        res = await fetch(`${baseURL}/api/chat/messages/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${refreshed}`,
+          },
+          body: JSON.stringify({ chat_room: chatRoomId, content }),
+        });
+      }
+    }
+
+    if (res.ok) {
+      setContent(""); // 成功したら入力欄クリア
+      console.log("送信成功:", await res.json());
+    } else {
+      console.error("送信失敗:", await res.json());
+    }
+  };
+
+  const fetchMessages = async (chatRoomId) => {
+    const access = localStorage.getItem("access");
+    const res = await fetch(`${baseURL}/api/chat/messages/${chatRoomId}/`, {
+      headers: {
+        Authorization: `Bearer ${access}`,
+      },
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      setMessages(data);
+    } else {
+      console.error("メッセージ取得失敗:", await res.json());
+    }
+  };
   return (
     <div className="user-detail-area">
       <button onClick={() => setIsDetailOpen(false)}>×</button>
@@ -75,8 +139,27 @@ const UserDetail = ({ setIsDetailOpen, selectedId }) => {
         <p>None</p>
       )}
       <div className="post-area">
-        <textarea placeholder="コメントを入力"></textarea>
-        <button>投稿</button>
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="コメントを入力"
+        />
+        <button onClick={postMessage}>投稿</button>
+      </div>
+
+      <div className="message-list">
+        <h3>メッセージ一覧</h3>
+        <ul>
+          {messages.map((msg) => (
+            <li key={msg.id}>
+              <strong>送信者: {msg.sender_username}</strong>
+              <br />
+              {msg.content}
+              <br />
+              <small>{new Date(msg.timestamp).toLocaleString()}</small>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

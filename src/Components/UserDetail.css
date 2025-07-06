@@ -40,6 +40,27 @@
   border-radius: 30px;
 }
 
+.message-list {
+  width: 500px;
+  margin: 5px auto;
+}
+
+.message-list ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.message-list ul li {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-top: solid 1px gainsboro;
+}
+
+.message-list ul li p {
+  white-space: pre-wrap;
+}
+
 /* ===== タブレット (768〜1023px) ===== */
 @media (min-width: 768px) and (max-width: 1023px) {
   .post-area textarea {
