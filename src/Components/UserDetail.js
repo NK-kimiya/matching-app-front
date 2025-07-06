@@ -101,10 +101,13 @@ const UserDetail = ({ setIsDetailOpen, selectedId }) => {
     }
 
     if (res.ok) {
+      const newMessage = await res.json(); // ← 新しく送信されたメッセージを取得
+      setMessages((prevMessages) => [...prevMessages, newMessage]); // ← メッセージ配列に追加
       setContent(""); // 成功したら入力欄クリア
       console.log("送信成功:", await res.json());
     } else {
-      console.error("送信失敗:", await res.json());
+      const errorText = await res.text(); // ← エラーレスポンスの中身（プレーンテキスト or JSON文字列）
+      alert("送信失敗: " + errorText); // ← アラートで表示
     }
   };
 
@@ -154,7 +157,7 @@ const UserDetail = ({ setIsDetailOpen, selectedId }) => {
             <li key={msg.id}>
               <strong>送信者: {msg.sender_username}</strong>
               <br />
-              {msg.content}
+              <p>{msg.content}</p>
               <br />
               <small>{new Date(msg.timestamp).toLocaleString()}</small>
             </li>

@@ -55,6 +55,7 @@
   width: 100%;
   text-align: left;
   border-top: solid 1px gainsboro;
+  padding: 10px;
 }
 
 .message-list ul li p {
@@ -84,5 +85,9 @@
   .user-detail-area img {
     width: 150px;
     height: 150px;
+  }
+
+  .message-list {
+    width: 80%;
   }
 }
