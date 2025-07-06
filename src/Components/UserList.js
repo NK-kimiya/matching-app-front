@@ -3,7 +3,7 @@ import "./UserList.css";
 
 const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000"; // fallbackあり
 const cloudinaryBaseURL = "https://res.cloudinary.com/dl56fz2c5/";
-const UserList = ({ accessToken }) => {
+const UserList = ({ accessToken, setIsDetailOpen, setSelectedId }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -72,7 +72,14 @@ const UserList = ({ accessToken }) => {
             <p>
               {user.bio?.length > 30 ? user.bio.slice(0, 30) + "..." : user.bio}
             </p>
-            <button>もっと見る</button>
+            <button
+              onClick={() => {
+                setSelectedId(user.id);
+                setIsDetailOpen(true); // 追加
+              }}
+            >
+              もっと見る
+            </button>
           </div>
         );
       })}

@@ -4,10 +4,13 @@ import RegisterForm from "./Auth/RegisterForm";
 import Login from "./Auth/Login";
 import Navigation from "./Common/Navigation";
 import UserList from "./Components/UserList";
+import UserDetail from "./Components/UserDetail";
 
 function App() {
   const [registerDisplay, setRegisterDisplay] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
+  const [selectedId, setSelectedId] = useState(null);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   useEffect(() => {
     setAccessToken(localStorage.getItem("refresh"));
@@ -17,7 +20,17 @@ function App() {
       {accessToken ? (
         <div>
           <Navigation setAccessToken={setAccessToken} />
-          <UserList accessToken={accessToken} />
+          <UserList
+            accessToken={accessToken}
+            setSelectedId={setSelectedId}
+            setIsDetailOpen={setIsDetailOpen}
+          />
+          {isDetailOpen && (
+            <UserDetail
+              setIsDetailOpen={setIsDetailOpen}
+              selectedId={selectedId}
+            />
+          )}
         </div>
       ) : registerDisplay ? (
         <RegisterForm setRegisterDisplay={setRegisterDisplay} />

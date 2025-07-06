@@ -118,6 +118,8 @@ const RegisterForm = ({ setRegisterDisplay }) => {
   };
   return (
     <div className="register-form">
+      <h2>App Title</h2>
+      <h3>新規作成</h3>
       <form onSubmit={handleSubmit}>
         <input
           name="username"
