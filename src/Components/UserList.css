@@ -3,27 +3,23 @@
   margin: 10px auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding-top: 50px;
-}
-
-h3 {
-  padding-top: 80px;
-  text-align: center;
-  font-size: 30px;
+  justify-content: flex-start;
+  padding-top: 0px;
 }
 
 .user-list-item {
-  width: 450px;
+  width: 225px;
   margin: 10px;
   position: relative;
-  height: 600px;
+  padding-top: 5px;
+  border-bottom: solid 1px gainsboro;
+  padding-bottom: 5px;
 }
 
 .user-list-item img {
   display: block;
-  width: 350px;
-  height: 350px;
+  width: 160px;
+  height: 160px;
   margin: 5px auto;
   border-radius: 50%;
 }
@@ -40,7 +36,7 @@ h3 {
 
 .user-list-item button {
   display: block;
-  width: 350px;
+  width: 160px;
   background-color: #4f46e5;
   border: none;
   padding: 10px;
@@ -54,32 +50,30 @@ h3 {
 /* ===== タブレット (768〜1023px) ===== */
 @media (min-width: 768px) and (max-width: 1023px) {
   .user-list-area {
-    width: 740px;
+    width: 690px;
   }
   .user-list-item {
-    width: 330px;
+    width: 210px;
   }
 
   .user-list-item img {
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
   }
 
   .user-list-item button {
-    width: 300px;
+    width: 150px;
   }
 }
 
 /* ===== スマホ (〜767px) ===== */
 @media (max-width: 767px) {
   .user-list-area {
-    width: 80%;
+    width: 300px;
   }
 
   .user-list-item {
-    width: 100%;
-    height: 500px;
-    margin-top: 60px;
+    width: 130px;
   }
 
   .user-list-item p {
@@ -87,11 +81,11 @@ h3 {
   }
 
   .user-list-item img {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
 
   .user-list-item button {
-    width: 200px;
+    width: 100px;
   }
 }

@@ -17,7 +17,6 @@ const Navigation = ({ setAccessToken, isSidebarOpen, setSidebarOpen }) => {
       {isSidebarOpen && (
         <div className="sidebar">
           <button onClick={() => setSidebarOpen(!isSidebarOpen)}>×</button>
-          <h3>MENU</h3>
           <Link to="/" onClick={() => setSidebarOpen(false)}>
             Home
           </Link>

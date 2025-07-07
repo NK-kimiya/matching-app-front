@@ -155,7 +155,9 @@ const UserDetail = ({ setIsDetailOpen, isDetailOpen, selectedId }) => {
           onChange={(e) => setContent(e.target.value)}
           placeholder="コメントを入力"
         />
-        <button onClick={postMessage}>投稿</button>
+        <button onClick={postMessage} className="message-post-button">
+          投稿
+        </button>
       </div>
 
       <div className="message-list">

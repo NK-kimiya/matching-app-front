@@ -74,7 +74,14 @@ const MyChat = () => {
           return (
             <div key={user.id} className="user-list-item">
               {user.profile_image && (
-                <img src={user.profile_image} alt="プロフィール画像" />
+                <img
+                  src={user.profile_image}
+                  alt="プロフィール画像"
+                  onClick={() => {
+                    setSelectedId(user.id);
+                    setIsDetailOpen(true);
+                  }}
+                />
               )}
               <h4>{user.username}</h4>
               <p>{user.prefecture}</p>
@@ -83,14 +90,6 @@ const MyChat = () => {
                   ? user.bio.slice(0, 30) + "..."
                   : user.bio}
               </p>
-              <button
-                onClick={() => {
-                  setSelectedId(user.id);
-                  setIsDetailOpen(true);
-                }}
-              >
-                もっと見る
-              </button>
             </div>
           );
         })}

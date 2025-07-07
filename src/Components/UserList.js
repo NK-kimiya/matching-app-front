@@ -82,23 +82,22 @@ const UserList = ({ accessToken, setIsDetailOpen, setSelectedId }) => {
           return (
             <div key={user.id} className="user-list-item">
               {user.profile_image && (
-                <img src={user.profile_image} alt="プロフィール画像" />
+                <img
+                  src={user.profile_image}
+                  alt="プロフィール画像"
+                  onClick={() => {
+                    setSelectedId(user.id);
+                    setIsDetailOpen(true); // 追加
+                  }}
+                />
               )}
               <h4>{user.username}</h4>
               <p>{user.prefecture}</p>
-              <p>
+              <p className="bio-text">
                 {user.bio?.length > 30
                   ? user.bio.slice(0, 30) + "..."
                   : user.bio}
               </p>
-              <button
-                onClick={() => {
-                  setSelectedId(user.id);
-                  setIsDetailOpen(true); // 追加
-                }}
-              >
-                もっと見る
-              </button>
             </div>
           );
         })}

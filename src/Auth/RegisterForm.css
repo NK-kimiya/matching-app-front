@@ -45,6 +45,11 @@
   color: white;
 }
 
+.register-form a {
+  display: block;
+  text-align: center;
+}
+
 input[type="file"]::file-selector-button {
   background: #4f46e5; /* 好きな色 */
   color: #fff; /* 文字色 */

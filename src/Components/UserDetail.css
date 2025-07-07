@@ -3,7 +3,7 @@
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
-  height: 100vh;
+  height: 700px;
   width: 740px;
   background-color: white;
   border: solid 1px gainsboro;
@@ -72,6 +72,11 @@
 
 .user-detail-close-button {
   font-size: 40px;
+}
+
+.message-post-button {
+  background-color: #4f46e5;
+  color: white;
 }
 
 /* ===== タブレット (768〜1023px) ===== */
