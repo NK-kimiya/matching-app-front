@@ -1,4 +1,7 @@
 .header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
   width: 100%;
   margin: 0px auto;
   margin-bottom: 50px;
@@ -8,8 +11,46 @@
 
 button {
   display: block;
-  background-color: #4f46e5;
-  color: white;
+  background-color: white;
   border: none;
   padding: 10px;
+}
+
+.sidebar {
+  position: fixed;
+  width: 200px;
+  top: 20;
+  left: 20px;
+  background-color: white;
+  border-radius: 5px;
+  border: solid 1px gainsboro;
+  z-index: 2;
+}
+
+.sidebar button {
+  font-size: 30px;
+  padding: 3px;
+}
+
+.sidebar h3 {
+  margin: 3px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  cursor: default;
+  text-align: left;
+}
+
+.top-area {
+  display: flex;
+  justify-content: space-around;
+}
+.user-button {
+  width: 90px;
+  background-color: orange;
+  color: white;
 }

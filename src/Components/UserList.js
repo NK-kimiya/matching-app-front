@@ -9,17 +9,16 @@ const UserList = ({ accessToken, setIsDetailOpen, setSelectedId }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       const access = localStorage.getItem("access");
-      let res = await apiCall(access); // ①
+      let data = await apiCall(access); // ①
 
-      if (res.status === 401 || res.status === 403) {
+      if (data === null) {
         const refreshed = await refreshAccessToken(); // ②
         if (refreshed) {
-          res = await apiCall(refreshed); // ③
+          data = await apiCall(refreshed); // ③
         }
       }
 
-      if (res.ok) {
-        const data = await res.json();
+      if (data) {
         setUsers(data);
       } else {
         // ④ まだ失敗 → ログアウト
@@ -32,14 +31,30 @@ const UserList = ({ accessToken, setIsDetailOpen, setSelectedId }) => {
   }, []);
 
   // API 呼び出し（access を渡して実行）
-  const apiCall = (access) =>
-    fetch(`${baseURL}/api/users/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${access}`,
-      },
-    });
+  const apiCall = async (access) => {
+    try {
+      const res = await fetch(`${baseURL}/api/users/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${access}`,
+        },
+      });
+
+      if (res.status === 401 || res.status === 403) {
+        return null; // 認証エラーの場合
+      }
+
+      if (res.ok) {
+        return await res.json();
+      } else {
+        return null; // その他のエラーの場合
+      }
+    } catch (error) {
+      console.error("API call error:", error);
+      return null;
+    }
+  };
 
   // refresh で access を再発行
   const refreshAccessToken = async () => {
