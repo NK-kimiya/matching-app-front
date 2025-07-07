@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import RegisterForm from "./Auth/RegisterForm";
@@ -6,6 +7,7 @@ import Navigation from "./Common/Navigation";
 import UserList from "./Components/UserList";
 import UserDetail from "./Components/UserDetail";
 import MyChat from "./Components/MyChat";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [registerDisplay, setRegisterDisplay] = useState(false);
@@ -17,27 +19,26 @@ function App() {
   useEffect(() => {
     setAccessToken(localStorage.getItem("refresh"));
   }, []);
-  return (
+
+  // 従来のログイン／ユーザー一覧コンテンツ
+  const mainContent = (
     <div className="App">
       {accessToken ? (
-        <div>
-          <Navigation
-            setAccessToken={setAccessToken}
-            isSidebarOpen={isSidebarOpen}
-            setSidebarOpen={setSidebarOpen}
-          />
+        <>
           <UserList
             accessToken={accessToken}
             setSelectedId={setSelectedId}
             setIsDetailOpen={setIsDetailOpen}
           />
+          {/* どのルートでも、詳細モーダルは開閉できる */}
           {isDetailOpen && (
             <UserDetail
-              setIsDetailOpen={setIsDetailOpen}
               selectedId={selectedId}
+              setIsDetailOpen={setIsDetailOpen}
+              isDetailOpen={isDetailOpen}
             />
           )}
-        </div>
+        </>
       ) : registerDisplay ? (
         <RegisterForm setRegisterDisplay={setRegisterDisplay} />
       ) : (
@@ -47,6 +48,36 @@ function App() {
         />
       )}
     </div>
+  );
+
+  return (
+    <Router>
+      {/* ログイン済みなら常に表示 */}
+      {accessToken && (
+        <Navigation
+          setAccessToken={setAccessToken}
+          isSidebarOpen={isSidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+        />
+      )}
+
+      <Routes>
+        {/* /my-chat にアクセスしたら MyChat コンポーネント */}
+        <Route
+          path="/my-chat"
+          element={
+            <MyChat
+              selectedId={selectedId}
+              setSelectedId={setSelectedId}
+              setIsDetailOpen={setIsDetailOpen}
+            />
+          }
+        />
+
+        {/* その他すべては mainContent */}
+        <Route path="*" element={mainContent} />
+      </Routes>
+    </Router>
   );
 }
 

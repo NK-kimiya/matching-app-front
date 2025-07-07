@@ -3,11 +3,15 @@ import axios from "axios";
 import "./UserDetail.css";
 
 const baseURL = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000"; // fallbackあり
-const UserDetail = ({ setIsDetailOpen, selectedId }) => {
+const UserDetail = ({ setIsDetailOpen, isDetailOpen, selectedId }) => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
   const [content, setContent] = useState("");
   const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    console.log("isDetailOpen:", isDetailOpen);
+  }, [isDetailOpen]);
 
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -127,7 +131,12 @@ const UserDetail = ({ setIsDetailOpen, selectedId }) => {
   };
   return (
     <div className="user-detail-area">
-      <button onClick={() => setIsDetailOpen(false)}>×</button>
+      <button
+        onClick={() => setIsDetailOpen(false)}
+        className="user-detail-close-button"
+      >
+        ×
+      </button>
       {userData ? (
         <>
           {userData.profile_image && (

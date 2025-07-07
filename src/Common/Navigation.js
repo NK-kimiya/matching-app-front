@@ -1,6 +1,7 @@
 import React from "react";
 import { CiUser } from "react-icons/ci";
 import "./Navigation.css";
+import { Link } from "react-router-dom";
 const Navigation = ({ setAccessToken, isSidebarOpen, setSidebarOpen }) => {
   const logout = () => {
     // 1. トークン削除
@@ -17,6 +18,9 @@ const Navigation = ({ setAccessToken, isSidebarOpen, setSidebarOpen }) => {
         <div className="sidebar">
           <button onClick={() => setSidebarOpen(!isSidebarOpen)}>×</button>
           <h3>MENU</h3>
+          <Link to="/" onClick={() => setSidebarOpen(false)}>
+            Home
+          </Link>
           <a
             onClick={(e) => {
               e.preventDefault();
@@ -26,7 +30,9 @@ const Navigation = ({ setAccessToken, isSidebarOpen, setSidebarOpen }) => {
             ログアウト
           </a>
           <a href="">マイページ</a>
-          <a href="">履歴</a>
+          <Link to="/my-chat" onClick={() => setSidebarOpen(false)}>
+            履歴
+          </Link>
         </div>
       )}
     </div>
