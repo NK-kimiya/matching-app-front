@@ -1,0 +1,97 @@
+.mypage-area,
+.chat-area {
+  width: 500px;
+  margin: 5px auto;
+}
+
+.mypage-area {
+  padding-top: 70px;
+}
+
+.mypage-area img {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 5px auto;
+  border-radius: 50%;
+}
+
+.mypage-area form {
+  display: block;
+  width: 100%;
+}
+
+.mypage-area form input,
+.mypage-area form label,
+.mypage-area form textarea,
+.mypage-area form select {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+
+.mypage-area form textarea {
+  height: 70px;
+}
+
+.mypage-area form button {
+  display: block;
+  width: 250px;
+  margin: 5px auto;
+  background-color: #4f46e5;
+  border: none;
+  color: white;
+}
+
+.chat-area input {
+  display: block;
+  width: 100%;
+  height: 40px;
+}
+
+.chat-area button {
+  display: block;
+  width: 300px;
+  background-color: #4f46e5;
+  margin: 5px auto;
+  color: white;
+}
+
+.area-switching-button {
+  width: 500px;
+  display: flex;
+}
+
+.area-switching-button button {
+  width: 246px;
+  margin: 4px;
+  padding: 10px 0px;
+  color: white;
+}
+
+.switching-button {
+  background-color: #4f46e5;
+}
+
+.switching-button-none {
+  background-color: gainsboro;
+}
+
+.none {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mypage-area,
+  .chat-area {
+    width: 680px;
+  }
+}
+
+/* ===== スマホ (〜767px) ===== */
+@media (max-width: 767px) {
+  .mypage-area,
+  .chat-area {
+    width: 80%;
+  }
+}

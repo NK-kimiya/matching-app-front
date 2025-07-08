@@ -20,15 +20,18 @@ const Navigation = ({ setAccessToken, isSidebarOpen, setSidebarOpen }) => {
           <Link to="/" onClick={() => setSidebarOpen(false)}>
             Home
           </Link>
-          <a
+          <Link
+            to="/"
             onClick={(e) => {
-              e.preventDefault();
+              setSidebarOpen(false);
               logout();
             }}
           >
             ログアウト
-          </a>
-          <a href="">マイページ</a>
+          </Link>
+          <Link to="/my-page" onClick={() => setSidebarOpen(false)}>
+            マイページ
+          </Link>
           <Link to="/my-chat" onClick={() => setSidebarOpen(false)}>
             履歴
           </Link>

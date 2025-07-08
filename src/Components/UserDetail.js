@@ -161,7 +161,7 @@ const UserDetail = ({ setIsDetailOpen, isDetailOpen, selectedId }) => {
       </div>
 
       <div className="message-list">
-        <h3>メッセージ一覧</h3>
+        <h3>メッセージ一覧({messages.length}件)</h3>
         <ul>
           {messages.map((msg) => (
             <li key={msg.id}>

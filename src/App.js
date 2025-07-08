@@ -8,6 +8,7 @@ import UserList from "./Components/UserList";
 import UserDetail from "./Components/UserDetail";
 import MyChat from "./Components/MyChat";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Maypage from "./Components/Maypage";
 
 function App() {
   const [registerDisplay, setRegisterDisplay] = useState(false);
@@ -73,6 +74,8 @@ function App() {
             />
           }
         />
+
+        <Route path="/my-page" element={<Maypage />} />
 
         {/* その他すべては mainContent */}
         <Route path="*" element={mainContent} />

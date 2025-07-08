@@ -3,18 +3,17 @@
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
-  height: 700px;
   width: 740px;
+  max-height: 100vh; /* 最大高さをビューポートに制限 */
   background-color: white;
   border: solid 1px gainsboro;
-  overflow-y: auto;
-  padding-top: 60px;
+  overflow-y: auto; /* 縦方向スクロールを有効化 */
+  scroll-behavior: smooth;
 }
 
 .user-detail-area img {
   display: block;
   width: 300px;
-  height: 300px;
   margin: 10px auto;
   border-radius: 50%;
 }
@@ -51,6 +50,7 @@
 .message-list {
   width: 500px;
   margin: 5px auto;
+  padding-top: 20px;
 }
 
 .message-list ul {
@@ -72,6 +72,7 @@
 
 .user-detail-close-button {
   font-size: 40px;
+  margin-top: 60px;
 }
 
 .message-post-button {
