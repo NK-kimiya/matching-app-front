@@ -14,6 +14,7 @@ const Navigation = ({ setAccessToken, isSidebarOpen, setSidebarOpen }) => {
       <button onClick={() => setSidebarOpen(!isSidebarOpen)}>
         <CiUser size={30} />
       </button>
+      <h1>ゆるつな</h1>
       {isSidebarOpen && (
         <div className="sidebar">
           <button onClick={() => setSidebarOpen(!isSidebarOpen)}>×</button>

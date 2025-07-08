@@ -41,7 +41,7 @@ const Login = ({ setRegisterDisplay, setAccessToken }) => {
   };
   return (
     <div className="register-form">
-      <h2>App Title</h2>
+      <h2>ゆるつな</h2>
       <h3>ログイン</h3>
       {/* ---------- ログインフォーム ---------- */}
       <form onSubmit={handleSubmit}>
