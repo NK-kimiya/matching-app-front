@@ -110,7 +110,7 @@ const Mypage = () => {
         /* multipart */
         const fd = new FormData();
         Object.entries(formData).forEach(([k, v]) => fd.append(k, v));
-        fd.append("profile_image", file);
+        fd.append("profile_image_upload", file);
 
         await axiosClient.put("/api/profile/", fd, {
           headers: { "Content-Type": "multipart/form-data" },
