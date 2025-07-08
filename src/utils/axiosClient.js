@@ -2,7 +2,7 @@ import axios from "axios";
 
 // .env の REACT_APP_API_ROOT があればそれを、なければローカルの Django を基準 URL とする
 const baseURL = (
-  process.env.REACT_APP_API_ROOT || "http://127.0.0.1:8000"
+  process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000"
 ).replace(/\/+$/, ""); // 末尾に余分なスラッシュが複数あっても 1 つだけにする（無くても OK）
 
 // Axios インスタンスを作成し、以降はこれを共通クライアントとして使う
