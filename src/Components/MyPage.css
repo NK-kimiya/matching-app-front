@@ -104,4 +104,8 @@
   .area-switching-button button {
     width: 40%;
   }
+
+  .chat-area button {
+    width: 80%;
+  }
 }
