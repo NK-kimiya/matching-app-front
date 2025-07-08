@@ -60,6 +60,8 @@
 .area-switching-button {
   width: 500px;
   display: flex;
+  justify-content: center;
+  margin: 5px auto;
 }
 
 .area-switching-button button {
@@ -83,15 +85,23 @@
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .mypage-area,
-  .chat-area {
+  .chat-area,
+  .area-switching-button {
     width: 680px;
+  }
+  .area-switching-button button {
+    width: 332px;
   }
 }
 
 /* ===== スマホ (〜767px) ===== */
 @media (max-width: 767px) {
   .mypage-area,
-  .chat-area {
+  .chat-area,
+  .area-switching-button {
     width: 80%;
+  }
+  .area-switching-button button {
+    width: 40%;
   }
 }
